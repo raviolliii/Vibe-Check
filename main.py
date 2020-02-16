@@ -1,15 +1,15 @@
 from Spotify import Spotify
-from Graph import *
 from time import time  # DEV: remove later
 from pprint import pprint  # DEV: remove later
 from json import dumps
 
 # Create the spotify instance, and get the artist
 spotify = Spotify()
+spotify.__config()
 s = time()
-person = spotify.get_artist('the weeknd')
-with open('test.json', 'w+') as file:
-    file.write(dumps(person, indent=2))
+# person = spotify.get_artist('the weeknd')
+# with open('test.json', 'w+') as file:
+#     file.write(dumps(person, indent=2))
 
 # track "performance"
 print("\nTime: ", (time() - s))

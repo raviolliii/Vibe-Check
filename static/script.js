@@ -1,7 +1,16 @@
+//=======================================================
+// Constants and Utility Functions
+//=======================================================
 
-// ======================================================
+const $ = selector => document.querySelector(selector);
+const $$ = selector => document.querySelectorAll(selector);
+const round = d => Math.round(d * 1000) / 1000;
+const COLORS = ['#ff6347', '#ffd700', '#65d26e', '#87ceeb', '#ffffff']
+
+
+//=======================================================
 // Chart.js config
-// ======================================================
+//=======================================================
 
 Chart.defaults.global.responsive = false;
 Chart.defaults.global.animation.duration = 500;
@@ -41,17 +50,16 @@ Chart.defaults.scale.scaleLabel = {
 Chart.defaults.scale.ticks.fontColor = '#606060';
 
 
+//=======================================================
+// Main/Rendering
+//=======================================================
+
 // fetch data from server, show chart with resulting data
 const url = new URL(window.location.href);
 fetch('/api' + url.pathname)
     .then(res => res.json())
     .then(showContent)
     .catch(console.error);
-
-const $ = selector => document.querySelector(selector);
-const $$ = selector => document.querySelectorAll(selector);
-const round = d => Math.round(d * 1000) / 1000;
-const colors = ['#ff6347', '#ffd700', '#65d26e', '#87ceeb', '#ffffff']
 
 function showContent(data) {
     $('.artist-cover').setAttribute('src', data.imageURL)
@@ -69,7 +77,7 @@ function showContent(data) {
             valence: (s.valence * 2) - 1,
             polarity: s.polarity
         }));
-        const color = colors[i % colors.length];
+        const color = COLORS[i % COLORS.length];
 
         return {
             defaultColor: color,
