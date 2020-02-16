@@ -1,2 +1,7 @@
 __pycache__/
+
+# config files and stored temp data
 *.json
+
+# testing file
+test.py
