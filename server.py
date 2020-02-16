@@ -10,10 +10,6 @@ app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 # global spotify object for api calls
 spotify = Spotify()
 
-miller = {}
-with open('results.json') as file:
-    data = file.read()
-    miller = loads(data)
 
 @app.route('/api/<artist>')
 def api(artist):
@@ -21,10 +17,6 @@ def api(artist):
     API route - fetches and sends artist data
     as JSON response
     """
-    # NOTE: this is just for development, so JSON
-    # data can be easily sent from stored file
-    # if artist == 'mac-miller':
-    #     return miller
     artist = artist.replace('-', ' ')
     return spotify.get_artist(artist)
 
