@@ -69,7 +69,7 @@ input:focus {
 .underline::after {
     content: "";
     background-color: var(--main-accent-one);
-    width: 70px;
+    width: 72px;
     height: 6px;
     display: block;
     position: absolute;
