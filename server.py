@@ -21,8 +21,10 @@ def api(artist):
     API route - fetches and sends artist data
     as JSON response
     """
-    if artist == 'mac-miller':
-        return miller
+    # NOTE: this is just for development, so JSON
+    # data can be easily sent from stored file
+    # if artist == 'mac-miller':
+    #     return miller
     artist = artist.replace('-', ' ')
     return spotify.get_artist(artist)
 
