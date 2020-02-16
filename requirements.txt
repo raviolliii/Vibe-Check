@@ -1,0 +1,8 @@
+matplotlib
+numpy
+scipy
+bs4
+requests
+textblob
+spotipy
+flask

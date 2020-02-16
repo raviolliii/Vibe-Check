@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+
+    <head>
+        <link href="/css/styles.css" rel="stylesheet" type="text/css"/>
+        <title> Phonograph </title>
+    </head>
+
+    <body>
+        <div class="input-container">
+            <div class="title"> 
+                find the
+                <a class="underline" href="https://github.com/raviolliii">
+                    vibe
+                </a>
+            </div>
+            <form>
+                <input 
+                    type="text" 
+                    name="artist" 
+                    placeholder="search artist" 
+                    autocomplete="off"
+                />
+            </form>
+        </div>
+    </body>
+
+    <script>
+        function handleSubmit(e) {
+            e.preventDefault();
+            const ref = document.querySelector('input[name="artist"]');
+            let artist = ref.value.trim();
+            if (!artist) {
+                return;
+            }
+            artist = artist.split(' ').join('-');
+            window.location.href = `/${artist}`;
+        }
+
+        document.querySelector('form').onsubmit = handleSubmit;
+    </script>
+</html>
