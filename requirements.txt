@@ -3,4 +3,5 @@ requests
 textblob
 spotipy
 flask
+python-dotenv
 gunicorn

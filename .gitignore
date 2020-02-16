@@ -1,6 +1,7 @@
 __pycache__/
 
 # config files and stored temp data
+.env
 *.json
 
 # testing file

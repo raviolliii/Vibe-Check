@@ -5,6 +5,11 @@ from spotipy.oauth2 import SpotifyClientCredentials
 from json import loads, dumps
 from textblob import TextBlob
 
+# load in spotify credentials from environment
+import os
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Spotify:
     """
@@ -18,10 +23,10 @@ class Spotify:
 
     def __init_spotify(self):
         """ Creates credentials/token for spotipy """
-        self._config = {}
-        with open('.config.json') as file:
-            self._config = loads(file.read())
-        credentials = SpotifyClientCredentials(**self._config)
+        credentials = SpotifyClientCredentials(
+            client_id=os.getenv('CLIENT_ID'),
+            client_secret=os.getenv('CLIENT_SECRET')
+        )
         self._token = credentials.get_access_token()
         self.spotify = spotipy.Spotify(self._token)
 

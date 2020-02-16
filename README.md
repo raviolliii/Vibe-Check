@@ -42,13 +42,11 @@ If you want to test this out locally:
 1. Make sure `python3` is installed
 2. Install required dependencies with `pip3 install -r requirements.txt`
 3. Setup Spotify Developer App
-    1. Create file in project root `.config.json`
-    2. The format for the config file is as follows
-    ```json
-    {
-        "client_id": "SPOTIFY_CLIENT_ID",
-        "client_secret": "SPOTIFY_CLIENT_SECRET",
-    }
+    1. Create file in project root `.env`
+    2. Add the Spotify app credentials as environment variables:
+    ```
+    CLIENT_ID={SPOTIFY_CLIENT_ID_HERE}
+    CLIENT_SECRET={SPOTIFY_CLIENT_SECRET}
     ```
 4. Run `python3 server.py` to start the development server
 
