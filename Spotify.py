@@ -55,9 +55,7 @@ class Spotify:
         }
         albums = self.get_artist_albums(results['id'])
 
-        # TODO: fix this limit value of 10
-        LIMIT = 10
-        for album in albums[:LIMIT]:
+        for album in albums:
             artist['albums'].append(album)
         return artist
 
@@ -75,11 +73,16 @@ class Spotify:
 
         threads, albums = [], []
         seen = set()
+        counter, LIMIT = 0, 5
         for item in results:
             name, album_id = item["name"], item["id"]
             # filter out redundant albums (delux, remixes, etc.)
             if name in seen or "(" in name:
                 continue
+            # TODO: fix this limit value of 10
+            counter += 1
+            if counter > LIMIT:
+                break
             seen.add(name)
             thread = self.create_album(albums, name, album_id)
             threads.append(thread)
