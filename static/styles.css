@@ -96,6 +96,8 @@ input:focus {
 }
 
 .loading-container {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
@@ -105,7 +107,14 @@ input:focus {
     border-radius: 100%;
     border: solid 6px transparent;
     border-top-color: var(--main-accent-one);
+    align-self: center;
     animation: spin 1s cubic-bezier(.26,.51,.45,.98) infinite;
+}
+
+.loading-message {
+    align-self: center;
+    font-size: 22px;
+    margin-top: 42px;
 }
 
 .artist-container, .chart-container {

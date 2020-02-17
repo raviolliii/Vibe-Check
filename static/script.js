@@ -2,10 +2,29 @@
 // Constants and Utility Functions
 //=======================================================
 
+const LOADING_PHRASES = [
+    'ordering chipotle ... ',
+    'doing the thing ... ',
+    'brewing coffee ... ',
+    'testing ... ',
+    'checking instagram ... ',
+    'stealing exit signs ... ',
+    'creating repo ... ',
+    'venmo-ing money ... ',
+    'checking the time ... ',
+    'reverse parking ... ',
+    'filing taxes ... '
+];
+const COLORS = ['#ff6347', '#ffd700', '#65d26e', '#87ceeb', '#ffffff']
+
 const $ = selector => document.querySelector(selector);
 const $$ = selector => document.querySelectorAll(selector);
 const round = d => Math.round(d * 1000) / 1000;
-const COLORS = ['#ff6347', '#ffd700', '#65d26e', '#87ceeb', '#ffffff']
+
+function setLoadingMessage() {
+    const i = Math.floor(Math.random() * LOADING_PHRASES.length);
+    $('.loading-message').innerText = LOADING_PHRASES[i];
+}
 
 
 //=======================================================
@@ -55,10 +74,16 @@ Chart.defaults.scale.ticks.fontColor = '#606060';
 //=======================================================
 
 // fetch data from server, show chart with resulting data
+setLoadingMessage();
+const loadingInterval = setInterval(setLoadingMessage, 2 * 1000);
+
 const url = new URL(window.location.href);
 fetch('/api' + url.pathname)
     .then(res => res.json())
-    .then(showContent)
+    .then(data => {
+        clearInterval(loadingInterval);
+        showContent(data);
+    })
     .catch(console.error);
 
 function showContent(data) {
